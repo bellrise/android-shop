@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shop</string>
+    <string name="order_list">Order list</string>
+    <string name="send_sms">Send an SMS</string>
+    <string name="share">Share</string>
+    <string name="save_settings">Save settings</string>
+    <string name="about_the_program">About the program</string>
+</resources>

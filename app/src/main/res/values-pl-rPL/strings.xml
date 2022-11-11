@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sklep</string>
+    <string name="order_list">Lista zamówień</string>
+    <string name="send_sms">Wyślij SMS</string>
+    <string name="share">Udostępnij</string>
+    <string name="save_settings">Zapisz ustawienia</string>
+    <string name="about_the_program">O programie</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_order_list"
+        android:title="@string/order_list" />
+
+    <item
+        android:id="@+id/menu_send_sms"
+        android:title="@string/send_sms" />
+
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/share" />
+
+    <item
+        android:id="@+id/menu_save_settings"
+        android:title="@string/save_settings" />
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/about_the_program" />
+
+</menu>
