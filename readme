@@ -1,0 +1,6 @@
+android-shop
+============
+
+This app is for a school project. It's a simple offline computer store app,
+where you can log in and order parts. The main goal is to learn how to
+properly use SQLite, along with other Android parts using Java.
