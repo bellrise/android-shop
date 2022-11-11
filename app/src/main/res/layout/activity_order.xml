@@ -4,6 +4,50 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp" />
 
+    <View
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_below="@id/spinner"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@color/grey" />
+
+    <ImageView
+        android:id="@+id/pc_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/separator"
+        android:contentDescription="@string/computer_image" />
+
+    <TextView
+        android:id="@+id/pc_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pc_name"
+        android:layout_below="@id/pc_image"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/pc_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pc_desc"
+        android:layout_below="@id/pc_name"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_order"
+        android:title="@string/order" />
+
+    <item
         android:id="@+id/menu_order_list"
         android:title="@string/order_list" />
 

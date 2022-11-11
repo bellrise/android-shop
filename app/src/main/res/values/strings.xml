@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">Shop</string>
+    <string name="app_name">PowerStore</string>
     <string name="order_list">Order list</string>
     <string name="send_sms">Send an SMS</string>
     <string name="share">Share</string>
     <string name="save_settings">Save settings</string>
     <string name="about_the_program">About the program</string>
+    <string name="order">Order</string>
+    <string name="computer">Computer</string>
+    <string name="computer_image">Computer image</string>
+    <string name="pc_name">PC Name</string>
+    <string name="pc_desc">PC Desc</string>
+    <string name="amount">AMOUNT</string>
+    <string name="addons">ADDONS</string>
 </resources>
