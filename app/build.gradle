@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.krzak.shop'
+    namespace "net.bellrise.android.shop"
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.krzak.shop"
+        applicationId "net.bellrise.android.shop"
         minSdk 28
         targetSdk 32
         versionCode 1
