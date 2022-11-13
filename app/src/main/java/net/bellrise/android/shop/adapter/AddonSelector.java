@@ -9,23 +9,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.bellrise.android.shop.Global;
 import net.bellrise.android.shop.R;
-import net.bellrise.android.shop.data.StaticProducts;
+import net.bellrise.android.shop.data.Product;
 
-public class PCSelector extends BaseAdapter
+import java.util.ArrayList;
+import java.util.Locale;
+
+/**
+ * Dynamic addon selector. You can choose a product array to display, along
+ * with a <none> selected possbility.
+ */
+public class AddonSelector extends BaseAdapter
 {
+    private final ArrayList<Product> products;
     private final Context context;
 
-    public PCSelector(Context context)
+    public AddonSelector(Context context, ArrayList<Product> products)
     {
         this.context = context;
+        this.products = products;
     }
 
     @Override
     public int getCount()
     {
-        return Global.products.size(StaticProducts.Category.BOX);
+        return products.size() + 1;
     }
 
     @Override
@@ -47,13 +55,19 @@ public class PCSelector extends BaseAdapter
         ImageView img;
         TextView text;
 
+        if (i == 0) {
+            view = LayoutInflater.from(context).inflate(R.layout.empty_spinner_item, null);
+            return view;
+        }
+
         view = LayoutInflater.from(context).inflate(R.layout.spinner_item, null);
         img = view.findViewById(R.id.spinner_image);
         text = view.findViewById(R.id.spinner_text);
 
-        /* Format the spinner element. */
-        img.setImageResource(Global.products.get(StaticProducts.Category.BOX, i).image_id);
-        text.setText(Global.products.get(StaticProducts.Category.BOX, i).name);
+        img.setImageResource(products.get(i - 1).image_id);
+        text.setText(String.format(Locale.getDefault(), "%s, %s %.0f zł",
+                products.get(i - 1).name, context.getString(R.string.price),
+                products.get(i - 1).price));
 
         return view;
     }
