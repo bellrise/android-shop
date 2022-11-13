@@ -10,7 +10,7 @@ public class OrderList extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_order_list);
         super.onCreate(savedInstanceState);
     }
 }

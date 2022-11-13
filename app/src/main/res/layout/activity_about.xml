@@ -2,15 +2,41 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:gravity="center_vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:popupTheme="@style/Theme.AppCompat.Light" />
+    <ImageView
+        android:id="@+id/about_logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/about_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/about_logo"
+        android:text="@string/app_name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/about_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_title"
+        android:layout_centerHorizontal="true"
+        android:text="@string/at_bellrise"/>
+
+    <TextView
+        android:id="@+id/about_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_author"
+        android:layout_centerHorizontal="true"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:text="@string/github_link" />
 
 </RelativeLayout>

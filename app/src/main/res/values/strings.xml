@@ -28,4 +28,7 @@
     <string name="missing_detail_data">Missing detail data</string>
     <string name="missing_name">Missing name</string>
     <string name="missing_phone_number">Missing phone number</string>
+    <string name="github_link">https://github.com/bellrise/android-shop</string>
+    <string name="at_bellrise">\@bellrise</string>
+    <string name="not_implemented">Not implemented</string>
 </resources>

@@ -44,7 +44,7 @@ public class StaticProducts
         add(Category.KEYBOARD, "Keychron K3", "Wireless RGB", R.drawable.keychron_k3, 469);
         add(Category.KEYBOARD, "Silver Monkey K90m", "Wireless Membrane", R.drawable.silver_monkey_k90m, 90);
 
-        add(Category.WEBCAM, "Logitech C920", "Microphone FullHD", R.drawable.logitech_c920, 449);
+        add(Category.WEBCAM, "Logitech C920", "+Microphone FullHD", R.drawable.logitech_c920, 449);
 
         add(Category.MONITOR, "Acer SB271BMIX", "27\" 1920x1080", R.drawable.acer_sb271bmix, 679);
         add(Category.MONITOR, "HP V24i", "23.8\" 1920x1080", R.drawable.hp_v24i, 579);

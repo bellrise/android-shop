@@ -10,7 +10,7 @@ public class Share extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_not_impl);
         super.onCreate(savedInstanceState);
     }
 }

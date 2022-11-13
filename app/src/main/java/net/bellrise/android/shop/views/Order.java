@@ -2,6 +2,7 @@ package net.bellrise.android.shop.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,15 +15,29 @@ import net.bellrise.android.shop.Global;
 import net.bellrise.android.shop.R;
 import net.bellrise.android.shop.adapter.AddonSelector;
 import net.bellrise.android.shop.adapter.PCSelector;
-import net.bellrise.android.shop.data.AddonCallback;
+import net.bellrise.android.shop.AddonCallback;
 import net.bellrise.android.shop.data.StaticProducts;
 
-import java.nio.channels.InterruptedByTimeoutException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Locale;
 
 
 public class Order extends BaseActivity implements AdapterView.OnItemSelectedListener
 {
+    private static class Cache
+    {
+        public int box_selected;
+        public int[] addons_selected;
+    }
+
+    /* Store some cached state about the program state, for user
+       experience, meaning the settings will be kept intact if
+       they want to return to the order page. */
+    private static Cache cache;
+
     private int selected;
     private double price;
     private TextView pc_name;
@@ -71,6 +86,8 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
             x.putExtra("monitor", addon_callbacks[3].selected);
 
             startActivity(x);
+
+            Log.i(Global.TAG, "confirmed order");
         });
 
         setAddonSpinners();
@@ -137,6 +154,39 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
         }
 
         total_price.setText(String.format(Locale.getDefault(), "%.2f zł", price));
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        cache = new Cache();
+        cache.box_selected = selected;
+        cache.addons_selected = new int[4];
+
+        for (int i = 0; i < 4; i++)
+            cache.addons_selected[i] = addon_callbacks[i].selected;
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        if (cache == null)
+            return;
+
+        Log.i(Global.TAG, "resuming Order with cached data");
+
+        selected = cache.box_selected;
+        ((Spinner) findViewById(R.id.spinner)).setSelection(selected);
+
+        final int[] ids = {R.id.spinner_addon_mouse, R.id.spinner_addon_keyboard,
+                R.id.spinner_addon_webcam, R.id.spinner_addon_monitor};
+
+        for (int i = 0; i < 4; i++)
+            ((Spinner) findViewById(ids[i])).setSelection(cache.addons_selected[i]);
     }
 
     @Override

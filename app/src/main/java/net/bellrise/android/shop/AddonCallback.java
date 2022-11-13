@@ -1,12 +1,14 @@
-package net.bellrise.android.shop.data;
+package net.bellrise.android.shop;
 
 import android.view.View;
 import android.widget.AdapterView;
 
+import net.bellrise.android.shop.data.StaticProducts;
+
 import java.util.function.Consumer;
 
 /**
- * This class stores the selected element index of a addon spinner.
+ * Reacts to the currently selected item in a spinner.
  */
 public class AddonCallback implements AdapterView.OnItemSelectedListener
 {
