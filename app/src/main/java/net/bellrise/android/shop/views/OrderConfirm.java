@@ -1,8 +1,13 @@
 package net.bellrise.android.shop.views;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import net.bellrise.android.shop.Global;
 import net.bellrise.android.shop.R;
@@ -67,19 +73,17 @@ public class OrderConfirm extends AppCompatActivity
             if (user_name.getText().toString().isEmpty()) {
                 Toast.makeText(this, getString(R.string.missing_name), Toast.LENGTH_SHORT).show();
                 user_name.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                return;
             }
 
             if (user_phone.getText().toString().isEmpty()) {
                 Toast.makeText(this, getString(R.string.missing_phone_number), Toast.LENGTH_SHORT).show();
                 user_phone.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                return;
             }
 
-            try {
-                placeOrder();
-            } catch (JSONException e) {
-                Log.e(Global.TAG, "failed to serialize order");
-                Toast.makeText(this, "Failed to order", Toast.LENGTH_LONG).show();
-            }
+            placeOrder();
+            sendEmail();
 
             Toast.makeText(this, "Placed order!", Toast.LENGTH_SHORT).show();
             finish();
@@ -87,9 +91,9 @@ public class OrderConfirm extends AppCompatActivity
     }
 
     /**
-     * Store the order in the database.
+     * Store the order in the database & send an email.
      */
-    private void placeOrder() throws JSONException
+    private void placeOrder()
     {
         OrderDatabase db = new OrderDatabase(this);
         ContentValues vals = new ContentValues();
@@ -100,12 +104,51 @@ public class OrderConfirm extends AppCompatActivity
 
         vals.put(OrderDatabase.COL_USER, user_name.getText().toString());
         vals.put(OrderDatabase.COL_PHONE, user_phone.getText().toString());
-        vals.put(OrderDatabase.COL_DATA, serializeOrder());
+        vals.put(OrderDatabase.COL_DATA, serializeOrder().toString());
 
         db.getWritableDatabase().insert(OrderDatabase.TABLE_NAME, null, vals);
     }
 
-    private String serializeOrder() throws JSONException
+    @SuppressLint("QueryPermissionsNeeded")
+    private void sendEmail()
+    {
+        Intent mail = new Intent(Intent.ACTION_SENDTO);
+        mail.setData(Uri.parse("mailto:"));
+        mail.putExtra(Intent.EXTRA_EMAIL, new String[] {"example@example.com"});
+        mail.putExtra(Intent.EXTRA_SUBJECT, "PowerStore " + getString(R.string.order));
+
+        StringBuilder content;
+        JSONObject root = serializeOrder();
+
+        try {
+            content = new StringBuilder();
+            JSONArray items = root.getJSONArray("items");
+
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.getJSONObject(i);
+                content.append(String.format(Locale.getDefault(), "%s, %s %.2f zł\n",
+                        item.getString("name"), getString(R.string.price),
+                        item.getDouble("price")));
+            }
+
+            content.append(String.format(Locale.getDefault(), "\n%s %.2f zł",
+                    getString(R.string.total_price), total_price));
+
+        } catch (JSONException e) {
+            content = new StringBuilder(root.toString());
+        }
+
+        mail.putExtra(Intent.EXTRA_TEXT, content.toString());
+
+        if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_DENIED)
+            requestPermissions(new String[] {Manifest.permission.INTERNET}, 1);
+        if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_DENIED)
+            return;
+
+        startActivity(mail);
+    }
+
+    private JSONObject serializeOrder()
     {
         JSONObject res = new JSONObject();
         JSONArray items = new JSONArray();
@@ -114,39 +157,44 @@ public class OrderConfirm extends AppCompatActivity
         Product p;
 
         if (data == null)
-            return "{\"error\": true}";
+            return res;
 
-        /* Add the main box. */
-        p = Global.products.get(StaticProducts.Category.BOX, data.getInt("box"));
-        item = new JSONObject();
-
-        item.put("name", p.name);
-        item.put("desc", p.desc);
-        item.put("price", p.price);
-        items.put(item);
-
-        /* Add addons to the item list. */
-        for (int i = 0; i < detail_names.length; i++) {
-            int selected = data.getInt(detail_names[i]);
-            if (selected <= 0)
-                continue;
-
-            p = Global.products.get(detail_cats[i], selected - 1);
+        try {
+            /* Add the main box. */
+            p = Global.products.get(StaticProducts.Category.BOX, data.getInt("box"));
             item = new JSONObject();
 
-            /* Add a new product to the list. */
             item.put("name", p.name);
             item.put("desc", p.desc);
             item.put("price", p.price);
             items.put(item);
+
+            /* Add addons to the item list. */
+            for (int i = 0; i < detail_names.length; i++) {
+                int selected = data.getInt(detail_names[i]);
+                if (selected <= 0)
+                    continue;
+
+                p = Global.products.get(detail_cats[i], selected - 1);
+                item = new JSONObject();
+
+                /* Add a new product to the list. */
+                item.put("name", p.name);
+                item.put("desc", p.desc);
+                item.put("price", p.price);
+                items.put(item);
+            }
+
+            res.put("total_price", total_price);
+            res.put("items", items);
+            res.put("error", false);
+
+        } catch (JSONException e) {
+            Log.d(Global.TAG, "failed to serialze");
         }
 
-        res.put("total_price", total_price);
-        res.put("items", items);
-        res.put("error", false);
-
         Log.i(Global.TAG, "serialized order: " + res);
-        return res.toString();
+        return res;
     }
 
     @Override
