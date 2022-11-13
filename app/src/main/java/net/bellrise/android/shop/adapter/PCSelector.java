@@ -21,7 +21,7 @@ public class SpinnerAdapter extends BaseAdapter
     @Override
     public int getCount()
     {
-        return Global.products.self.size();
+        return Global.products.size();
     }
 
     @Override
@@ -47,8 +47,9 @@ public class SpinnerAdapter extends BaseAdapter
         img = view.findViewById(R.id.spinner_image);
         text = view.findViewById(R.id.spinner_text);
 
-        img.setImageResource(Global.products.self.get(i).image_id);
-        text.setText(Global.products.self.get(i).name);
+        /* Format the spinner element. */
+        img.setImageResource(Global.products.get(i).image_id);
+        text.setText(Global.products.get(i).name);
 
         return view;
     }
