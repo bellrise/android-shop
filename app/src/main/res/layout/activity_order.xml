@@ -1,53 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent" >
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp" />
+        android:layout_width="match_parent">
 
-    <View
-        android:id="@+id/separator"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_below="@id/spinner"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        android:background="@color/grey" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp" />
 
-    <ImageView
-        android:id="@+id/pc_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/separator"
-        android:contentDescription="@string/computer_image" />
+        <View
+            android:id="@+id/sep_1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@id/spinner"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/grey" />
 
-    <TextView
-        android:id="@+id/pc_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pc_name"
-        android:layout_below="@id/pc_image"
-        android:textSize="20sp"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true" />
+        <ImageView
+            android:id="@+id/pc_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/sep_1"
+            android:contentDescription="@string/computer_image" />
 
-    <TextView
-        android:id="@+id/pc_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pc_desc"
-        android:layout_below="@id/pc_name"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true" />
+        <RelativeLayout
+            android:id="@+id/pc_title"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/pc_image"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/pc_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pc_name"
+                android:textSize="20sp"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/pc_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pc_desc"
+                android:layout_below="@id/pc_name"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/pc_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pc_desc"
+                android:layout_centerHorizontal="true"
+                android:text="@string/price"
+                android:textColor="@color/red" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/addon_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_below="@id/pc_title" >
+
+            <TextView
+                android:id="@+id/text_mouse"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/mouse"
+                android:layout_marginBottom="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner_addon_mouse"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:layout_alignBottom="@id/text_mouse" />
+
+            <TextView
+                android:id="@+id/text_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/keyboard"
+                android:layout_below="@id/text_mouse"
+                android:layout_marginBottom="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner_addon_keyboard"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:layout_alignBottom="@id/text_keyboard" />
+
+            <TextView
+                android:id="@+id/text_webcam"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/webcam"
+                android:layout_below="@id/text_keyboard"
+                android:layout_marginBottom="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner_addon_webcam"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:layout_alignBottom="@id/text_webcam" />
+
+            <TextView
+                android:id="@+id/text_monitor"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/monitor"
+                android:layout_below="@id/text_webcam"
+                android:layout_marginBottom="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner_addon_monitor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:layout_alignBottom="@id/text_monitor" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/sep_2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@id/addon_box"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/text_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/sep_2"
+            android:text="@string/total_price" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textColor="@color/red"
+            android:layout_alignBottom="@id/text_total_price"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp" />
+
+        <Button
+            android:id="@+id/button_order"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/total_price"
+            android:layout_margin="30dp"
+            android:text="@string/order" />
+
+    </RelativeLayout>
+
+</ScrollView>

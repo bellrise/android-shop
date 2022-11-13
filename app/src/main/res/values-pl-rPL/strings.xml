@@ -6,4 +6,21 @@
     <string name="share">Udostępnij</string>
     <string name="save_settings">Zapisz ustawienia</string>
     <string name="about_the_program">O programie</string>
+    <string name="order">Zamów</string>
+    <string name="computer">Komputer</string>
+    <string name="computer_image">Zdjęcie komputera</string>
+    <string name="pc_name">Nazwa komputera</string>
+    <string name="pc_desc">Opis komputera</string>
+    <string name="amount">ILOŚĆ</string>
+    <string name="addons">DODATKI</string>
+    <string name="mouse">MYSZKA</string>
+    <string name="keyboard">KLAWIATURA</string>
+    <string name="webcam">KAMERKA</string>
+    <string name="monitor">MONITOR</string>
+    <string name="none">Brak</string>
+    <string name="price">cena</string>
+    <string name="total_price">CENA KOŃCOWA:</string>
+    <string name="confirm_order_details">Potwierdź dane zamówienia</string>
+    <string name="pc">KOMPUTER</string>
+    <string name="place_order">Złóż zamówienie</string>
 </resources>

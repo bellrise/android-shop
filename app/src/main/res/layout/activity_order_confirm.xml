@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:id="@+id/text_confirm_order_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_order_details"
+        android:layout_margin="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/user_data"
+        android:layout_width="match_parent"
+        android:layout_below="@id/text_confirm_order_details"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edit_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_or_company_name"
+            android:autofillHints="name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edit_user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:layout_below="@id/edit_user_name"
+            android:autofillHints="phone"
+            android:inputType="phone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/user_data">
+
+        <TextView
+            android:id="@+id/detail_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pc" />
+
+        <TextView
+            android:id="@+id/detail_box_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_box"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/detail_mouse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_box"
+            android:text="@string/mouse" />
+
+        <TextView
+            android:id="@+id/detail_mouse_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_mouse"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/detail_keyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_mouse"
+            android:text="@string/monitor" />
+
+        <TextView
+            android:id="@+id/detail_keyboard_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_keyboard"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/detail_webcam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_keyboard"
+            android:text="@string/webcam" />
+
+        <TextView
+            android:id="@+id/detail_webcam_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_webcam"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/detail_monitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_webcam"
+            android:text="@string/monitor" />
+
+        <TextView
+            android:id="@+id/detail_monitor_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_monitor"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_monitor"
+            android:layout_marginTop="10dp"
+            android:text="@string/total_price" />
+
+        <TextView
+            android:id="@+id/detail_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_price"
+            android:layout_alignParentEnd="true"
+            android:text="@string/empty" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_place_order"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/details"
+        android:text="@string/place_order" />
+
+</RelativeLayout>

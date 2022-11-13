@@ -12,4 +12,20 @@
     <string name="pc_desc">PC Desc</string>
     <string name="amount">AMOUNT</string>
     <string name="addons">ADDONS</string>
+    <string name="mouse">MOUSE</string>
+    <string name="keyboard">KEYBOARD</string>
+    <string name="webcam">WEBCAM</string>
+    <string name="monitor">MONITOR</string>
+    <string name="none">None</string>
+    <string name="price">price</string>
+    <string name="total_price">TOTAL PRICE:</string>
+    <string name="confirm_order_details">Confirm order details</string>
+    <string name="pc">PC</string>
+    <string name="place_order">Place order</string>
+    <string name="empty" translatable="false">-</string>
+    <string name="name_or_company_name">Name or company name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="missing_detail_data">Missing detail data</string>
+    <string name="missing_name">Missing name</string>
+    <string name="missing_phone_number">Missing phone number</string>
 </resources>
