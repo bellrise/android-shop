@@ -10,17 +10,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import net.bellrise.android.shop.AddonCallback;
 import net.bellrise.android.shop.BaseActivity;
 import net.bellrise.android.shop.Global;
 import net.bellrise.android.shop.R;
 import net.bellrise.android.shop.adapter.AddonSelector;
 import net.bellrise.android.shop.adapter.PCSelector;
-import net.bellrise.android.shop.AddonCallback;
 import net.bellrise.android.shop.data.StaticProducts;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Locale;
 

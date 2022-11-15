@@ -23,4 +23,11 @@
     <string name="confirm_order_details">Potwierdź dane zamówienia</string>
     <string name="pc">KOMPUTER</string>
     <string name="place_order">Złóż zamówienie</string>
+    <string name="name_or_company_name">Imię lub nazwa firmy</string>
+    <string name="phone_number">Numer telefonu</string>
+    <string name="missing_detail_data">Brakujące szczegóły</string>
+    <string name="missing_name">Brakuje imienia lub nazwy firmy</string>
+    <string name="missing_phone_number">Brakuje numeru telefonu</string>
+    <string name="not_implemented">Nie zaimplementowano</string>
+    <string name="ordered_at">Zamówiono o:</string>
 </resources>

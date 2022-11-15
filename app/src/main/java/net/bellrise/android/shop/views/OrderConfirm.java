@@ -28,6 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 
 public class OrderConfirm extends AppCompatActivity
@@ -131,6 +136,10 @@ public class OrderConfirm extends AppCompatActivity
                         item.getDouble("price")));
             }
 
+            String date = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("HH:mm:ss dd.MM.yyyy"));
+            content.append(String.format(Locale.getDefault(), "\n%s %s",
+                    getString(R.string.ordered_at), date));
             content.append(String.format(Locale.getDefault(), "\n%s %.2f zł",
                     getString(R.string.total_price), total_price));
 
