@@ -18,6 +18,7 @@ public class OrderDatabase extends SQLiteOpenHelper
     public static final String COL_ID = "id";
     public static final String COL_USER = "user";
     public static final String COL_PHONE = "phone";
+    public static final String COL_DATE = "date";
     public static final String COL_DATA = "data";
 
     public OrderDatabase(Context context)
@@ -32,6 +33,7 @@ public class OrderDatabase extends SQLiteOpenHelper
                 + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COL_USER + " TEXT NOT NULL,"
                 + COL_PHONE + " TEXT NOT NULL,"
+                + COL_DATE + " INTEGER NOT NULL,"
                 + COL_DATA + " TEXT NOT NULL)"
         );
     }

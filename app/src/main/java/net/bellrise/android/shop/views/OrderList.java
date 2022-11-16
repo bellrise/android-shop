@@ -32,14 +32,16 @@ public class OrderList extends BaseActivity
         /* Read the oreders from the database. */
         OrderDatabase db = new OrderDatabase(this);
         Cursor res = db.getReadableDatabase().query(OrderDatabase.TABLE_NAME,
-                new String[] {"user", "phone", "data"}, null, null, null, null, null);
+                new String[] {"user", "phone", "data", "date"},
+                null, null, null, null, null);
 
         stuff = new ArrayList<>();
         while (res.moveToNext()) {
             stuff.add(new OrderRecord(
                     res.getString(0),
                     res.getString(1),
-                    res.getString(2)
+                    res.getString(2),
+                    res.getLong(3)
             ));
         }
 

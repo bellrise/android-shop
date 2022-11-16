@@ -32,6 +32,7 @@ import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -110,6 +111,7 @@ public class OrderConfirm extends AppCompatActivity
         vals.put(OrderDatabase.COL_USER, user_name.getText().toString());
         vals.put(OrderDatabase.COL_PHONE, user_phone.getText().toString());
         vals.put(OrderDatabase.COL_DATA, serializeOrder().toString());
+        vals.put(OrderDatabase.COL_DATE, Calendar.getInstance().getTimeInMillis());
 
         db.getWritableDatabase().insert(OrderDatabase.TABLE_NAME, null, vals);
     }

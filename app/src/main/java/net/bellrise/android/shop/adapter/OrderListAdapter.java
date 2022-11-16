@@ -1,6 +1,7 @@
 package net.bellrise.android.shop.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import net.bellrise.android.shop.Global;
 import net.bellrise.android.shop.R;
 import net.bellrise.android.shop.data.OrderRecord;
 
@@ -17,6 +19,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -63,8 +69,13 @@ public class OrderListAdapter extends ArrayAdapter<OrderRecord>
                 e.printStackTrace();
             }
 
-            user.setText(String.format(Locale.getDefault(), "%s - %s",
-                    thing.name, thing.phone_number));
+            Log.i(Global.TAG, "getView: " + thing.timestamp);
+            Instant t = Instant.ofEpochMilli(thing.timestamp);
+            LocalDateTime ldt = LocalDateTime.ofInstant(t, ZoneId.systemDefault());
+            String date = ldt.format(DateTimeFormatter.ofPattern("d.M HH:mm:ss"));
+
+            user.setText(String.format(Locale.getDefault(), "%s - %s (%s)",
+                    thing.name, thing.phone_number, date));
             stuff.setText(builder.toString());
         }
 
