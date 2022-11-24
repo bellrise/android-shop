@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -90,6 +91,7 @@ public class OrderConfirm extends AppCompatActivity
 
             placeOrder();
             sendEmail();
+            sendSMS(user_phone.getText().toString());
 
             Toast.makeText(this, "Placed order!", Toast.LENGTH_SHORT).show();
             finish();
@@ -151,12 +153,42 @@ public class OrderConfirm extends AppCompatActivity
 
         mail.putExtra(Intent.EXTRA_TEXT, content.toString());
 
-        if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_DENIED)
-            requestPermissions(new String[] {Manifest.permission.INTERNET}, 1);
-        if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_DENIED)
-            return;
-
+        getPermission(Manifest.permission.INTERNET);
         startActivity(mail);
+    }
+
+    private void sendSMS(String addr)
+    {
+        SmsManager sms_manager;
+        String text;
+        Bundle data;
+        int n_products;
+
+        getPermission(Manifest.permission.SEND_SMS);
+
+        data = getIntent().getExtras();
+        n_products = 1;
+        for (String detail_name : detail_names) {
+            if (data.getInt(detail_name) > 0)
+                n_products++;
+        }
+
+        text = String.format(Locale.getDefault(), "%s %s. %s %d %s",
+                getString(R.string.placed_order_for), data.getString("username"),
+                getString(R.string.bought), n_products, getString(R.string.products));
+
+        sms_manager = SmsManager.getDefault();
+        sms_manager.sendTextMessage(addr, null, text, null, null);
+    }
+
+    private void getPermission(String perm)
+    {
+        String[] perms = new String[] {perm};
+
+        do {
+            if (checkSelfPermission(perm) == PackageManager.PERMISSION_DENIED)
+                requestPermissions(perms, 1);
+        } while (checkSelfPermission(perm) != PackageManager.PERMISSION_GRANTED);
     }
 
     private JSONObject serializeOrder()
@@ -235,8 +267,13 @@ public class OrderConfirm extends AppCompatActivity
 
     private void fillDetails(Bundle data)
     {
+        EditText username_input;
         TextView detail;
         int index;
+
+        /* Possible username */
+        username_input = findViewById(R.id.edit_user_name);
+        username_input.setText(data.getString("username"));
 
         /* PC name */
         detail = findViewById(R.id.detail_box_value);
