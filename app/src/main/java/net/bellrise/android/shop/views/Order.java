@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.bellrise.android.shop.AddonCallback;
 import net.bellrise.android.shop.BaseActivity;
@@ -27,6 +28,7 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
     {
         public int box_selected;
         public int[] addons_selected;
+        public String username;
     }
 
     /* Store some cached state about the program state, for user
@@ -36,6 +38,7 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
 
     private int selected;
     private double price;
+    private String username;
     private TextView pc_name;
     private TextView pc_desc;
     private TextView pc_price;
@@ -66,6 +69,10 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
         addon_selectors = new AddonSelector[4];
         addon_callbacks = new AddonCallback[4];
 
+        /* Get logged username from extras. */
+        Bundle data = getIntent().getExtras();
+        username = data.isEmpty() ? "" : data.getString("username");
+
         /* Set spinner adapter */
         pc_selector = new PCSelector(getApplicationContext());
         pc_spinner.setAdapter(pc_selector);
@@ -80,6 +87,7 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
             x.putExtra("keyboard", addon_callbacks[1].selected);
             x.putExtra("webcam", addon_callbacks[2].selected);
             x.putExtra("monitor", addon_callbacks[3].selected);
+            x.putExtra("username", username);
 
             startActivity(x);
 
@@ -160,6 +168,7 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
         cache = new Cache();
         cache.box_selected = selected;
         cache.addons_selected = new int[4];
+        cache.username = username;
 
         for (int i = 0; i < 4; i++)
             cache.addons_selected[i] = addon_callbacks[i].selected;
@@ -175,6 +184,7 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
 
         Log.i(Global.TAG, "resuming Order with cached data");
 
+        username = cache.username;
         selected = cache.box_selected;
         ((Spinner) findViewById(R.id.spinner)).setSelection(selected);
 

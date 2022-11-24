@@ -30,4 +30,12 @@
     <string name="missing_phone_number">Brakuje numeru telefonu</string>
     <string name="not_implemented">Nie zaimplementowano</string>
     <string name="ordered_at">Zamówiono o:</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="passwd">Hasło</string>
+    <string name="login">Zaloguj się</string>
+    <string name="missing_passwd">Brakuje hasła</string>
+    <string name="wrong_user_or_passwd">Nieprawidłowa nazwa użytkownika lub hasło</string>
+    <string name="placed_order_for">Zamówiono dla</string>
+    <string name="bought">Zakupiono</string>
+    <string name="products">produkt(ów)</string>
 </resources>

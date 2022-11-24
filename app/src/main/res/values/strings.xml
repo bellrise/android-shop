@@ -27,9 +27,17 @@
     <string name="phone_number">Phone number</string>
     <string name="missing_detail_data">Missing detail data</string>
     <string name="missing_name">Missing name</string>
+    <string name="missing_passwd">Missing password</string>
     <string name="missing_phone_number">Missing phone number</string>
     <string name="github_link" translatable="false">https://github.com/bellrise/android-shop</string>
     <string name="at_bellrise" translatable="false">\@bellrise</string>
     <string name="not_implemented">Not implemented</string>
     <string name="ordered_at">Ordered at:</string>
+    <string name="username">Username</string>
+    <string name="passwd">Password</string>
+    <string name="login">Login</string>
+    <string name="wrong_user_or_passwd">Wrong username or password</string>
+    <string name="placed_order_for">Placed an order for</string>
+    <string name="bought">Bought</string>
+    <string name="products">product(s)</string>
 </resources>
