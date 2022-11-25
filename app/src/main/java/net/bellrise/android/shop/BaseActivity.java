@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.bellrise.android.shop.views.About;
+import net.bellrise.android.shop.views.AddUser;
 import net.bellrise.android.shop.views.Order;
 import net.bellrise.android.shop.views.OrderList;
 import net.bellrise.android.shop.views.SaveSettings;
@@ -26,9 +27,7 @@ public class BaseActivity extends AppCompatActivity
         views = new HashMap<>();
         views.put(R.id.menu_order, Order.class);
         views.put(R.id.menu_order_list, OrderList.class);
-        views.put(R.id.menu_send_sms, SendSms.class);
-        views.put(R.id.menu_share, Share.class);
-        views.put(R.id.menu_save_settings, SaveSettings.class);
+        views.put(R.id.menu_add_user, AddUser.class);
         views.put(R.id.menu_about, About.class);
     }
 
@@ -42,6 +41,10 @@ public class BaseActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
+        /* Check if the user wants to log out. */
+        if (item.getItemId() == R.id.menu_log_out)
+            finish();
+
         for (int key : views.keySet()) {
             if (item.getItemId() != key)
                 continue;

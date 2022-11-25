@@ -38,4 +38,8 @@
     <string name="placed_order_for">Zamówiono dla</string>
     <string name="bought">Zakupiono</string>
     <string name="products">produkt(ów)</string>
+    <string name="add_user">Dodaj uzytkownika</string>
+    <string name="added_user">Dodano użytkownika</string>
+    <string name="already_exists">już istnieje</string>
+    <string name="log_out">Wyloguj się</string>
 </resources>

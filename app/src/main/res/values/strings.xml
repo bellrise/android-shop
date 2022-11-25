@@ -40,4 +40,8 @@
     <string name="placed_order_for">Placed an order for</string>
     <string name="bought">Bought</string>
     <string name="products">product(s)</string>
+    <string name="add_user">Add user</string>
+    <string name="added_user">Added user</string>
+    <string name="already_exists">already exists</string>
+    <string name="log_out">Log out</string>
 </resources>

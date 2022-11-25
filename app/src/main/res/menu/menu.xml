@@ -10,19 +10,15 @@
         android:title="@string/order_list" />
 
     <item
-        android:id="@+id/menu_send_sms"
-        android:title="@string/send_sms" />
-
-    <item
-        android:id="@+id/menu_share"
-        android:title="@string/share" />
-
-    <item
-        android:id="@+id/menu_save_settings"
-        android:title="@string/save_settings" />
+        android:id="@+id/menu_add_user"
+        android:title="@string/add_user" />
 
     <item
         android:id="@+id/menu_about"
         android:title="@string/about_the_program" />
+
+    <item
+        android:id="@+id/menu_log_out"
+        android:title="@string/log_out" />
 
 </menu>
