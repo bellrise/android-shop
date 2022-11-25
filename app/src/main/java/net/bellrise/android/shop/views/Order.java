@@ -71,7 +71,10 @@ public class Order extends BaseActivity implements AdapterView.OnItemSelectedLis
 
         /* Get logged username from extras. */
         Bundle data = getIntent().getExtras();
-        username = data.isEmpty() ? "" : data.getString("username");
+        if (data != null)
+            username = data.isEmpty() ? "" : data.getString("username");
+        else
+            username = "";
 
         /* Set spinner adapter */
         pc_selector = new PCSelector(getApplicationContext());

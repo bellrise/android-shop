@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.bellrise.android.shop.views.About;
 import net.bellrise.android.shop.views.AddUser;
+import net.bellrise.android.shop.views.Login;
 import net.bellrise.android.shop.views.Order;
 import net.bellrise.android.shop.views.OrderList;
 import net.bellrise.android.shop.views.SaveSettings;
@@ -42,8 +43,10 @@ public class BaseActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         /* Check if the user wants to log out. */
-        if (item.getItemId() == R.id.menu_log_out)
-            finish();
+        if (item.getItemId() == R.id.menu_log_out) {
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        }
 
         for (int key : views.keySet()) {
             if (item.getItemId() != key)
